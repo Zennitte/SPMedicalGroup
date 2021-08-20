@@ -4,12 +4,15 @@ GO
 USE SPMEDGROUP_KAUE;
 GO
 
+--TipoUsuario
 
 CREATE TABLE tipoUsuario(
  idTipoUsuario TINYINT PRIMARY KEY IDENTITY,
  nomeTipo VARCHAR(100) NOT NULL UNIQUE
 );
 GO
+
+--Usuario
 
 CREATE TABLE usuario(
  idUsuario INT PRIMARY KEY IDENTITY, 
@@ -20,11 +23,15 @@ CREATE TABLE usuario(
 );
 GO
 
+--Especialização
+
 CREATE TABLE especializacao(
  idEspecializacao TINYINT PRIMARY KEY IDENTITY,
  nomeEspec VARCHAR(100) NOT NULL UNIQUE
 );
 GO
+
+--Clinica
 
 CREATE TABLE clinica(
  idClinica SMALLINT PRIMARY KEY IDENTITY,
@@ -35,13 +42,46 @@ CREATE TABLE clinica(
 );
 GO
 
+--Paciente
+
 CREATE TABLE paciente(
  idPaciente INT PRIMARY KEY IDENTITY,
  idUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario),
  dataNasc DATE NOT NULL,
- telefone VARCHAR(20) UNIQUE,
+ telefone VARCHAR(20),
  rg VARCHAR(15) NOT NULL UNIQUE,
  cpf VARCHAR(15) NOT NULL UNIQUE,
- endereco VARCHAR NOT NULL
+ endereco VARCHAR(200) NOT NULL
+);
+GO
+
+--Situacao
+
+CREATE TABLE situacao(
+ idSituacao TINYINT PRIMARY KEY IDENTITY,
+ descricao VARCHAR(100) NOT NULL
+);
+GO
+
+--Medico
+
+CREATE TABLE medico(
+ idMedico INT PRIMARY KEY IDENTITY,
+ idUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario),
+ idEspecializacao TINYINT FOREIGN KEY REFERENCES especializacao(idEspecializacao),
+ idClinica SMALLINT FOREIGN KEY REFERENCES clinica(idClinica),
+ crm VARCHAR(20) NOT NULL UNIQUE
+);
+GO
+
+--Consulta
+
+CREATE TABLE consulta(
+ idConsulta INT PRIMARY KEY IDENTITY,
+ idPaciente INT FOREIGN KEY REFERENCES paciente(idPaciente),
+ idMedico INT FOREIGN KEY REFERENCES medico(idMedico),
+ idSituacao TINYINT FOREIGN KEY REFERENCES situacao(idSituacao) DEFAULT(1),
+ descricao VARCHAR(250),
+ dataConsul DATETIME NOT NULL
 );
 GO
