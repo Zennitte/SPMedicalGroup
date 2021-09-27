@@ -85,3 +85,15 @@ CREATE TABLE consulta(
  dataConsul DATETIME NOT NULL
 );
 GO
+
+--Imagem Usuario
+
+CREATE TABLE imagemUsuario(
+ id INT PRIMARY KEY IDENTITY(1,1),
+ idUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario),
+ binario VARBINARY(MAX) NOT NULL,
+ mimeType VARCHAR(30) NOT NULL,
+ nomeArquivo VARCHAR(250) NOT NULL,
+ data_inclusao DATETIME DEFAULT GETDATE() NULL
+);
+GO
