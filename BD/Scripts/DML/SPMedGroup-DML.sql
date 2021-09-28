@@ -26,6 +26,12 @@ VALUES (3, 'Ricardo Lemos', 'ricardo.lemos@spmedicalgroup.com.br', '123456'),
 	   (3, 'Helena Strada', 'helena.souza@spmedicalgroup.com.br', '123456');
 GO
 
+--ADM
+
+INSERT INTO usuario(idTipoUsuario, nome, email,senha)
+VALUES (2, 'Jõao Brabo', 'brabo@adm.com', 'adm123');
+GO
+
 --Especializacao
 
 INSERT INTO especializacao(nomeEspec)
