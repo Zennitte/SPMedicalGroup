@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\OneDrive\\Ambiente de Trabalho\\senai_spmedgroup\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi.csproj": {}
+    "C:\\Users\\User\\OneDrive\\Documentos\\Senai\\SPMedGroup\\SPMedicalGroup\\API\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\OneDrive\\Ambiente de Trabalho\\senai_spmedgroup\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi.csproj": {
+    "C:\\Users\\User\\OneDrive\\Documentos\\Senai\\SPMedGroup\\SPMedicalGroup\\API\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Ambiente de Trabalho\\senai_spmedgroup\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi.csproj",
+        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Documentos\\Senai\\SPMedGroup\\SPMedicalGroup\\API\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi.csproj",
         "projectName": "senai.spmedgroup.webApi",
-        "projectPath": "C:\\Users\\User\\OneDrive\\Ambiente de Trabalho\\senai_spmedgroup\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi.csproj",
+        "projectPath": "C:\\Users\\User\\OneDrive\\Documentos\\Senai\\SPMedGroup\\SPMedicalGroup\\API\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive\\Ambiente de Trabalho\\senai_spmedgroup\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\obj\\",
+        "outputPath": "C:\\Users\\User\\OneDrive\\Documentos\\Senai\\SPMedGroup\\SPMedicalGroup\\API\\senai.spmedgroup.webApi\\senai.spmedgroup.webApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

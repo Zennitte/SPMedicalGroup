@@ -36,6 +36,8 @@ namespace senai.spmedgroup.webApi.Repositories
         public void Cadastrar(Usuario novaUsuario)
         {
             ctx.Usuarios.Add(novaUsuario);
+
+            ctx.SaveChanges();
         }
 
         public string ConsultarPerfil(int id)

@@ -56,27 +56,119 @@ namespace senai.spmedgroup.webApi.Repositories
             ctx.SaveChanges();
         }
 
-        public List<Consulta> ListarMedico(int id)
+        public List<Consulta> ListarMinhas(int id, int idTipo)
         {
-            Medico medicoBuscado = ctx.Medicos.FirstOrDefault(m => m.IdMedico == id);
+            if (idTipo == 3)
+            {
+                Medico medicoBuscado = ctx.Medicos.FirstOrDefault(m => m.IdUsuario == id);
 
-            int idMedico = medicoBuscado.IdMedico;
+                int idMedico = medicoBuscado.IdMedico;
 
-            return ctx.Consultas.Include(c => c.IdPacienteNavigation).Include(c => c.IdMedicoNavigation).Include(c => c.IdSituacaoNavigation).Include(c => c.IdMedicoNavigation.IdClinicaNavigation).Where(c => c.IdConsulta == idMedico).ToList();
-        }
+                return ctx.Consultas.Where(m => m.IdMedico == idMedico)
+                    .Select(p => new Consulta()
+                    {
+                        DataConsul = p.DataConsul,
+                        IdConsulta = p.IdConsulta,
+                        Descricao = p.Descricao,
+                        IdMedicoNavigation = new Medico()
+                        {
+                            Crm = p.IdMedicoNavigation.Crm,
+                            IdUsuarioNavigation = new Usuario()
+                            {
+                                Nome = p.IdMedicoNavigation.IdUsuarioNavigation.Nome,
+                                Email = p.IdMedicoNavigation.IdUsuarioNavigation.Email
+                            }
+                        },
+                        IdPacienteNavigation = new Paciente()
+                        {
+                            Cpf = p.IdPacienteNavigation.Cpf,
+                            Telefone = p.IdPacienteNavigation.Telefone,
+                            IdUsuarioNavigation = new Usuario()
+                            {
+                                Nome = p.IdPacienteNavigation.IdUsuarioNavigation.Nome,
+                                Email = p.IdPacienteNavigation.IdUsuarioNavigation.Email
+                            }
+                        },
+                        IdSituacaoNavigation = new Situacao
+                        {
+                            Descricao = p.IdSituacaoNavigation.Descricao
+                        }
+                    })
+                    .ToList();
+            }
+            else if (idTipo == 1)
+            {
+                Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == id);
 
-        public List<Consulta> ListarPaciente(int id)
-        {
-            Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == id);
+                int idPaciente = pacienteBuscado.IdPaciente;
 
-            int idPaciente = pacienteBuscado.IdPaciente;
+                return ctx.Consultas.Where(m => m.IdPaciente == idPaciente)
+                    .Select(p => new Consulta()
+                    {
+                        DataConsul = p.DataConsul,
+                        IdConsulta = p.IdConsulta,
+                        IdMedicoNavigation = new Medico()
+                        {
+                            Crm = p.IdMedicoNavigation.Crm,
+                            IdUsuarioNavigation = new Usuario()
+                            {
+                                Nome = p.IdMedicoNavigation.IdUsuarioNavigation.Nome,
+                                Email = p.IdMedicoNavigation.IdUsuarioNavigation.Email
+                            }
+                        },
+                        IdPacienteNavigation = new Paciente()
+                        {
+                            Cpf = p.IdPacienteNavigation.Cpf,
+                            Telefone = p.IdPacienteNavigation.Telefone,
+                            IdUsuarioNavigation = new Usuario()
+                            {
+                                Nome = p.IdPacienteNavigation.IdUsuarioNavigation.Nome,
+                                Email = p.IdPacienteNavigation.IdUsuarioNavigation.Email
+                            }
+                        },
+                        IdSituacaoNavigation = new Situacao
+                        {
+                            Descricao = p.IdSituacaoNavigation.Descricao
+                        }
+                    })
+                    .ToList();
+            }
 
-            return ctx.Consultas.Include(c => c.IdPacienteNavigation).Include(c => c.IdMedicoNavigation).Include(c => c.IdSituacaoNavigation).Include(c => c.IdMedicoNavigation.IdClinicaNavigation).Where(c => c.IdConsulta == idPaciente).ToList();
+            return null;
         }
 
         public List<Consulta> ListarTodos()
         {
-            return ctx.Consultas.Include(c => c.IdMedicoNavigation).Include(c => c.IdPacienteNavigation).Include(c => c.IdSituacaoNavigation).Include(c => c.IdMedicoNavigation.IdClinicaNavigation).ToList();
+            return ctx.Consultas
+                    .Select(p => new Consulta()
+                    {
+                        DataConsul = p.DataConsul,
+                        IdConsulta = p.IdConsulta,
+                        IdMedicoNavigation = new Medico()
+                        {
+                            Crm = p.IdMedicoNavigation.Crm,
+                            IdUsuarioNavigation = new Usuario()
+                            {
+                                Nome = p.IdMedicoNavigation.IdUsuarioNavigation.Nome,
+                                Email = p.IdMedicoNavigation.IdUsuarioNavigation.Email
+                            }
+                        },
+                        IdPacienteNavigation = new Paciente()
+                        {
+                            Cpf = p.IdPacienteNavigation.Cpf,
+                            Telefone = p.IdPacienteNavigation.Telefone,
+                            IdUsuarioNavigation = new Usuario()
+                            {
+                                Nome = p.IdPacienteNavigation.IdUsuarioNavigation.Nome,
+                                Email = p.IdPacienteNavigation.IdUsuarioNavigation.Email
+                            }
+                        },
+                        IdSituacaoNavigation = new Situacao
+                        {
+                            Descricao = p.IdSituacaoNavigation.Descricao
+                        }
+                    })
+                    .ToList();
         }
     }
 }

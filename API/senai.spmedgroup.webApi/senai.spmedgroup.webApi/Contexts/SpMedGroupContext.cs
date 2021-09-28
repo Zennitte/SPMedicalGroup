@@ -111,17 +111,17 @@ namespace senai.spmedgroup.webApi.Contexts
                     .HasDefaultValueSql("((1))");
 
                 entity.HasOne(d => d.IdMedicoNavigation)
-                    .WithMany(p => p.Consulta)
+                    .WithMany(p => p.Consultas)
                     .HasForeignKey(d => d.IdMedico)
                     .HasConstraintName("FK__consulta__idMedi__6477ECF3");
 
                 entity.HasOne(d => d.IdPacienteNavigation)
-                    .WithMany(p => p.Consulta)
+                    .WithMany(p => p.Consultas)
                     .HasForeignKey(d => d.IdPaciente)
                     .HasConstraintName("FK__consulta__idPaci__6383C8BA");
 
                 entity.HasOne(d => d.IdSituacaoNavigation)
-                    .WithMany(p => p.Consulta)
+                    .WithMany(p => p.Consultas)
                     .HasForeignKey(d => d.IdSituacao)
                     .HasConstraintName("FK__consulta__idSitu__656C112C");
             });

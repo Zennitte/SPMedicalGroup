@@ -15,11 +15,7 @@ namespace senai.spmedgroup.webApi.Domains
 
         public int IdPaciente { get; set; }
         public int? IdUsuario { get; set; }
-
-        [Required(ErrorMessage = "Data de nascimento necessária")]
         public DateTime DataNasc { get; set; }
-
-        [Required(ErrorMessage = "Telefone necessário")]
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "RG necessário")]

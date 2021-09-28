@@ -9,17 +9,9 @@ namespace senai.spmedgroup.webApi.Domains
     public partial class Consulta
     {
         public int IdConsulta { get; set; }
-
-        [Required(ErrorMessage = "Id do Paciente necessário")]
         public int? IdPaciente { get; set; }
-
-        [Required(ErrorMessage = "Id do Médico necessário")]
         public int? IdMedico { get; set; }
-
-        [Required(ErrorMessage = "Id da Situação necessário")]
         public byte? IdSituacao { get; set; }
-
-        [Required(ErrorMessage = "Descrição necessário")]
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "Data da Consulta necessária")]
