@@ -18,10 +18,12 @@ namespace senai.spmedgroup.webApi.Controllers
     public class ConsultasController : ControllerBase
     {
         private IConsultaRepository _consultaRepository { get; set; }
+        private IMedicoRepository _medicoRepository { get; set; }
 
         public ConsultasController()
         {
             _consultaRepository = new ConsultaRepository();
+            _medicoRepository = new MedicoRepository();
         }
 
         [Authorize(Roles = "2")]
@@ -108,7 +110,8 @@ namespace senai.spmedgroup.webApi.Controllers
         public IActionResult AlterarDescricao(Consulta consultaAtualizada, int id)
         {
             Consulta consultaBuscada = _consultaRepository.BuscarPorId(id);
-            int idMed = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+            int idUser = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+            int idMed = _medicoRepository.BuscarPorId(idUser).IdMedico;
 
             if (consultaAtualizada.Descricao == null)
             {
@@ -141,6 +144,21 @@ namespace senai.spmedgroup.webApi.Controllers
                 Mensagem = "Descrição da consulta alterada com sucesso",
                 consultaAtualizada
             }); 
+        }
+
+        [Authorize(Roles = "2")]
+        [HttpGet]
+        public IActionResult ListarTodos()
+        {
+            if (_consultaRepository.ListarTodos().Count == 0)
+            {
+                return BadRequest(new
+                {
+                    Mensagem = "Nenhuma consulta encontrada"
+                });                
+            }
+
+            return Ok(_consultaRepository.ListarTodos());
         }
     }
 }

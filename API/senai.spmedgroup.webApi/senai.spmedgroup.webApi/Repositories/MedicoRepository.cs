@@ -28,7 +28,7 @@ namespace senai.spmedgroup.webApi.Repositories
 
         public Medico BuscarPorId(int id)
         {
-            return ctx.Medicos.FirstOrDefault(m => m.IdMedico == id);
+            return ctx.Medicos.FirstOrDefault(m => m.IdUsuario == id);
         }
 
         public void Cadastrar(Medico novaMedico)

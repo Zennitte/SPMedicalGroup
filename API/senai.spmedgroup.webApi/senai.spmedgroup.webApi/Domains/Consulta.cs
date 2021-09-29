@@ -13,8 +13,6 @@ namespace senai.spmedgroup.webApi.Domains
         public int? IdMedico { get; set; }
         public byte? IdSituacao { get; set; }
         public string Descricao { get; set; }
-
-        [Required(ErrorMessage = "Data da Consulta necessária")]
         public DateTime DataConsul { get; set; }
 
         public virtual Medico IdMedicoNavigation { get; set; }

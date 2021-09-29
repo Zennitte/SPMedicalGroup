@@ -6,6 +6,7 @@ using senai.spmedgroup.webApi.Interfaces;
 using senai.spmedgroup.webApi.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -56,6 +57,52 @@ namespace senai.spmedgroup.webApi.Controllers
             }
 
             return Ok(listaUsuarios);
+        }
+
+        [Authorize(Roles = "2")]
+        [HttpGet("Imagem/Bd/{id}")]
+        public IActionResult ConsultarImagem(int id)
+        {
+            string base64 = _usuarioRepository.ConsultarPerfil(id);
+
+            if (base64 == null)
+            {
+                return NotFound(new
+                {
+                    Mensagem = "Imagem de perfil não cadastrada"
+                });
+            }
+
+            return Ok(base64);
+        }
+
+        [Authorize(Roles = "2")]
+        [HttpPost("Imagem/Bd")]
+        public IActionResult CadastrarImagem(IFormFile arquivo)
+        {
+            if (arquivo.Length > 1000000)
+            {
+                return BadRequest(new
+                {
+                    Mensagem = "Tamanho de imagem não suportado"
+                });
+            }
+
+            string extensao = arquivo.FileName.Split('.').Last();
+
+            if (extensao != "png" )
+            {
+                return BadRequest(new
+                {
+                    Mensagem = "Formato de imagem não suportado"
+                });
+            }
+
+            int idUser = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+            _usuarioRepository.SalvarPerfil(arquivo, idUser);
+
+            return Ok();
         }
     }
 }
