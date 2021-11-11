@@ -52,7 +52,7 @@ input {
 }
 
 .background_cadastrar {
-    background-image: url(../assets/Cadastrar_BackGround.png);
+    background-image:url(../img/Cadastrar_BackGround.png);
     height: 760px;
     display: flex;
     background-repeat: no-repeat;
@@ -110,7 +110,7 @@ input {
 }
 
 .background_consulta {
-    background-image: url(../assets/ListaAdm_BackGround.png);
+    background-image: url(../img/ListaAdm_BackGround.png);
     background-repeat: no-repeat;
     background-size: 100vw;
     justify-content: center;

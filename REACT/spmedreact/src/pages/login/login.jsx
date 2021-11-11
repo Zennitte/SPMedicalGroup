@@ -22,6 +22,7 @@ export default class Login extends Component {
 
     efetuaLogin = (evento) => {
         evento.preventDefault();
+        console.log(evento)
 
         this.setState({ erroMensagem: '', isLoading: true })
 
@@ -43,6 +44,7 @@ export default class Login extends Component {
 
                     console.log(this.props);
 
+                    console.log(parseJwt().role)
                     if (parseJwt().role === '1') {
                         this.props.history.push('/pac')
                     }
@@ -71,19 +73,19 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                <Header/>
+                <Header />
                 <main className="background">
                     <div className="grid">
                         <section className="container_form">
-                            <form className="alinhar_form" onSubmit = {this.efetuaLogin}>
+                            <form className="alinhar_form" onSubmit={this.efetuaLogin}>
                                 <h1>Login</h1>
                                 <div className="container_input espacamento">
                                     <label for="email">Email</label>
                                     <input type="email"
                                         placeholder="Email"
                                         name="email"
-                                        value = {this.state.email}
-                                        onChange = {this.atualizaStateCampo}
+                                        value={this.state.email}
+                                        onChange={this.atualizaStateCampo}
                                     />
                                 </div>
                                 <div className="container_input">
@@ -91,19 +93,47 @@ export default class Login extends Component {
                                     <input type="password"
                                         placeholder="Senha"
                                         name="senha"
-                                        value = {this.state.senha}
-                                        onChange = {this.atualizaStateCampo}
+                                        value={this.state.senha}
+                                        onChange={this.atualizaStateCampo}
                                     />
                                 </div>
                                 <div>
-                                    
+                                    <p style={{ color: 'red' }}>{this.state.erroMensagem}</p>
+
+                                    {
+                                        this.state.isLoading === true && (
+                                            <button
+                                                type="submit"
+                                                disabled
+                                                className="btn"
+                                                id = "btn_login"
+                                            >
+                                                Loading...
+                                            </button>
+                                        )
+                                    }
+                                    {
+                                        this.state.isLoading === false && (
+                                            <button
+                                                type="submit"
+                                                id="btn_login"
+                                                className="btn"
+                                                disabled={
+                                                    this.state.email === '' || this.state.senha === ''
+                                                    ? 'none'
+                                                    : ''
+                                                }
+                                            >
+                                                Entrar
+                                            </button>
+                                        )
+                                    }
                                 </div>
-                                <button className="btn">Entrar</button>
                             </form>
                         </section>
                     </div>
                 </main>
-                <Footer/>
+                <Footer />
             </div>
         )
     }

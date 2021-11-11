@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {
   Route,
@@ -58,7 +57,7 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route path="/" component = {Login}/>
+        <Route exact path="/" component = {Login}/>
         <PermissaoAdm path = "/adm" component = {Adm}/>
         <PermissaoMed path = "/med" component = {Med}/>
         <PermissaoPac path = "/pac" component = {Pac}/>

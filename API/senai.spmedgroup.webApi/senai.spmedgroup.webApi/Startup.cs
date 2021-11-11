@@ -28,6 +28,17 @@ namespace senai.spmedgroup.webApi
                     options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Ignore;
                 });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                                builder =>
+                                {
+                                    builder.WithOrigins("http://localhost:3000")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+                                });
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -74,6 +85,8 @@ namespace senai.spmedgroup.webApi
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "senai.hroads.webApi");
                 c.RoutePrefix = string.Empty;
             });
+
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
