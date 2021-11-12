@@ -107,6 +107,7 @@ namespace senai.spmedgroup.webApi.Repositories
                     {
                         DataConsul = p.DataConsul,
                         IdConsulta = p.IdConsulta,
+                        Descricao = p.Descricao,
                         IdMedicoNavigation = new Medico()
                         {
                             Crm = p.IdMedicoNavigation.Crm,
@@ -144,8 +145,10 @@ namespace senai.spmedgroup.webApi.Repositories
                     {
                         DataConsul = p.DataConsul,
                         IdConsulta = p.IdConsulta,
+                        Descricao = p.Descricao,
                         IdMedicoNavigation = new Medico()
                         {
+                            IdMedico = p.IdMedicoNavigation.IdMedico,
                             Crm = p.IdMedicoNavigation.Crm,
                             IdUsuarioNavigation = new Usuario()
                             {
@@ -155,6 +158,7 @@ namespace senai.spmedgroup.webApi.Repositories
                         },
                         IdPacienteNavigation = new Paciente()
                         {
+                            IdPaciente = p.IdPacienteNavigation.IdPaciente,
                             Cpf = p.IdPacienteNavigation.Cpf,
                             Telefone = p.IdPacienteNavigation.Telefone,
                             IdUsuarioNavigation = new Usuario()

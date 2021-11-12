@@ -49,7 +49,21 @@ namespace senai.spmedgroup.webApi.Repositories
 
         public List<Paciente> ListarTodos()
         {
-            return ctx.Pacientes.ToList();
+            return ctx.Pacientes
+                .Select(p => new Paciente()
+                {
+                    IdPaciente = p.IdPaciente,
+                    DataNasc = p.DataNasc,
+                    Rg = p.Rg,
+                    Cpf = p.Cpf,
+                    Endereco = p.Endereco,
+                    IdUsuarioNavigation = new Usuario()
+                    {
+                        Nome = p.IdUsuarioNavigation.Nome,
+                        Email = p.IdUsuarioNavigation.Email
+                    }
+                })
+                .ToList();
         }
     }
 }
