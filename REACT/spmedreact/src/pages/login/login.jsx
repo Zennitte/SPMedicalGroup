@@ -108,7 +108,7 @@ export default class Login extends Component {
                                                 className="btn"
                                                 id = "btn_login"
                                             >
-                                                Loading...
+                                                Carregando...
                                             </button>
                                         )
                                     }

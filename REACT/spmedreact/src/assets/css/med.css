@@ -52,7 +52,7 @@ input {
 }
 
 .background_cadastrar {
-    background-image: url(../assets/MedPront_BG.png);
+    background-image: url(../img/MedPront_BG.png);
     height: 760px;
     display: flex;
     background-repeat: no-repeat;
@@ -110,7 +110,7 @@ input {
 }
 
 .background_consulta {
-    background-image: url(../assets/MedCons_BG.png);
+    background-image: url(../img/MedCons_BG.png);
     background-repeat: no-repeat;
     background-size: 100vw;
     justify-content: center;
