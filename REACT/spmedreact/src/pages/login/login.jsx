@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
 import { parseJwt, usuarioAutenticado } from '../../services/auth';
-import { Link } from 'react-router-dom';
 
 import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'

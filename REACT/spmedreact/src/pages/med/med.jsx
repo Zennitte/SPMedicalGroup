@@ -6,17 +6,14 @@ import Footer from '../../components/footer/footer';
 
 import '../../assets/css/med.css'
 
-export default function ConsultaAdm() {
+export default function ConsultaMed() {
     const [listaConsul, setListaConsul] = useState([]);
-    const [listaMed, setListaMed] = useState([]);
-    const [listaPac, setListaPac] = useState([]);
-    const [idPaciente, setIdPaciente] = useState('');
-    const [idMedico, setIdMedico] = useState('');
-    const [dataConsul, setDataConsul] = useState('');
+    const [idConsulta, setIdConsulta] = useState('');
+    const [descricao, setDescricao] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     function listarConsultas() {
-        axios('http://spmedgroup-kaue.azurewebsites.net/api/consultas/minhas', {
+        axios('http://spmedgroup-kaue.azurewebsites.net/api/consultas/listar/minhas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -32,50 +29,15 @@ export default function ConsultaAdm() {
 
     useEffect(listarConsultas, []);
 
-    function listarMedicos() {
-        axios('http://spmedgroup-kaue.azurewebsites.net/api/medicos', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setListaMed(resposta.data)
-                }
-            })
-
-            .catch(erro => console.log(erro))
-    }
-
-    useEffect(listarMedicos, []);
-
-    function listarPacientes() {
-        axios('http://spmedgroup-kaue.azurewebsites.net/api/pacientes', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setListaPac(resposta.data)
-                }
-            })
-
-            .catch(erro => console.log(erro))
-    }
-
-    useEffect(listarPacientes, []);
-
     function alterarConsulta(evento) {
         setIsLoading(true);
 
         evento.preventDefault()
 
         axios
-            .patch('http://spmedgroup-kaue.azurewebsites.net/api/consultas', {
-                idPaciente: idPaciente,
-                idMedico: idMedico,
-                dataConsul: dataConsul
+            .patch('http://spmedgroup-kaue.azurewebsites.net/api/consultas/descricao/' + idConsulta, {
+
+
             }, {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -84,36 +46,63 @@ export default function ConsultaAdm() {
             .then(resposta => {
                 if (resposta.status === 201) {
                     console.log('Consulta cadastrada');
-                    setIdMedico('');
-                    setIdPaciente('');
-                    setDataConsul('');
+
                     listarConsultas();
                     setIsLoading(false);
                 }
             })
-            .catch(erro => console.log(erro), setIdMedico(''), setIdPaciente(''), setDataConsul(''), setInterval(() => {
+            .catch(erro => console.log(erro), setInterval(() => {
                 setIsLoading(false)
             }, 5000));
     }
 
     return (
         <div>
-            <Header/>
+            <Header />
             <main className="container">
                 <div className="background_cadastrar">
                     <div className="grid alinhar_box">
                         <section className="container_form">
-                            <form className="alinhar_form" onsubmit>
+                            <form className="alinhar_form" onSubmit={alterarConsulta}>
                                 <h1>Alterar Prontuário</h1>
                                 <div className="container_input espacamento">
                                     <label htmlFor="consulta">Consulta</label>
-                                    <select name="consulta" id="consulta" />
+                                    <select
+                                        name="consulta"
+                                        id="consulta"
+                                        value={idConsulta}
+                                        onChange={(campo) => setIdConsulta(campo.target.value)}
+                                    >
+                                        <option value='0'>Selecione a Consulta</option>
+
+                                        {listaConsul.map((consulta) => {
+                                            return (
+                                                <option key={consulta.idConsulta} value={consulta.idConsulta}>
+                                                    {consulta.idPacienteNavigation.nome},{consulta.idPacienteNavigation.cpf}
+                                                </option>
+                                            )
+                                        })}
+                                    </select>
                                 </div>
                                 <div className="container_input">
                                     <label htmlFor="descricao">Descrição</label>
-                                    <input type="text" name="descricao" />
+                                    <input
+                                        type="text" 
+                                        name="descricao"
+                                        value={descricao}
+                                        onChange={(campo) => setDescricao(campo.target.value)}
+                                    />
                                 </div>
-                                <button className="btn">Alterar</button>
+                                {isLoading && (
+                                    <button disabled className='btn' type = 'submit'>
+                                        Carregando...
+                                    </button>
+                                )}
+                                {!isLoading &&(
+                                    <button className='btn' type='submit'>
+                                        Alterar
+                                    </button>
+                                )}
                             </form>
                         </section>
                     </div>
@@ -128,23 +117,29 @@ export default function ConsultaAdm() {
                                         <th>Médico</th>
                                         <th>Paciente</th>
                                         <th>Descrição</th>
+                                        <th>Status</th>
                                         <th>Data</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Keiji</td>
-                                        <td>Lucas</td>
-                                        <td>Apresenta comportamento raivoso</td>
-                                        <td>11/11/21</td>
-                                    </tr>
+                                    {listaConsul.map((consulta) => {
+                                        return (
+                                            <tr key={consulta.idConsulta}>
+                                                <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
+                                                <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
+                                                <td>{consulta.descricao}</td>
+                                                <td>{consulta.idSituacaoNavigation.descricao}</td>
+                                                <td>{consulta.dataConsul}</td>
+                                            </tr>
+                                        )
+                                    })}
                                 </tbody>
                             </table>
                         </section>
                     </div>
                 </div>
             </main>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

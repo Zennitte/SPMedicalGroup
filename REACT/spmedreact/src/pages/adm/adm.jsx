@@ -176,6 +176,7 @@ export default function ConsultaAdm() {
                                     <tr>
                                         <th>Médico</th>
                                         <th>Paciente</th>
+                                        <th>Descrição</th>
                                         <th>Status</th>
                                         <th>Data</th>
                                     </tr>
@@ -186,6 +187,7 @@ export default function ConsultaAdm() {
                                             <tr key={consulta.idConsulta}>
                                                 <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
+                                                <td>{consulta.descricao}</td>
                                                 <td>{consulta.idSituacaoNavigation.descricao}</td>
                                                 <td>{consulta.dataConsul}</td>
                                             </tr>

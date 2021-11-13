@@ -48,7 +48,7 @@ input {
 }
 
 .background_consulta {
-    background-image: url(../assets/Pac_BG.png);
+    background-image: url(../img/Pac_BG.png);
     background-repeat: no-repeat;
     background-size: 100vw;
     justify-content: center;
