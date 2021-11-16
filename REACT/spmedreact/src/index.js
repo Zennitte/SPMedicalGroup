@@ -13,7 +13,7 @@ import Login from './pages/login/login';
 import Adm from './pages/adm/adm';
 import Pac from './pages/pac/pac';
 import Med from './pages/med/med';
-// import NotFound from './pages/notfound';
+import NotFound from './pages/notfound/notfound';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -58,11 +58,12 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component = {Login}/>
+        <Route path ="/login" component ={Login}/>
         <PermissaoAdm path = "/adm" component = {Adm}/>
         <PermissaoMed path = "/med" component = {Med}/>
         <PermissaoPac path = "/pac" component = {Pac}/>
-        {/* <Route path = "/notFound" component = {NotFound}/> */}
-        {/* <Redirect to = "/notFound"/> */}
+        <Route path = "/notFound" component = {NotFound}/>
+        <Redirect to = "/notFound"/>
       </Switch>
     </div>
   </Router>

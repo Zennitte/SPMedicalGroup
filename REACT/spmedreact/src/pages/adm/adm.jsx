@@ -189,7 +189,10 @@ export default function ConsultaAdm() {
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.descricao}</td>
                                                 <td>{consulta.idSituacaoNavigation.descricao}</td>
-                                                <td>{consulta.dataConsul}</td>
+                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(consulta.dataConsul))}</td>
                                             </tr>
                                         )
                                     })}

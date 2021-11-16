@@ -17,7 +17,7 @@ export default function ConsultaPac() {
         })
             .then(resposta => {
                 if (resposta.status === 200) {
-                    setListaConsul(resposta.data)
+                    setListaConsul(resposta.data.listaConsultas)
                 }
             })
 
@@ -39,7 +39,8 @@ export default function ConsultaPac() {
                                     <tr>
                                         <th>Médico</th>
                                         <th>Paciente</th>
-                                        <th>Descrição</th>
+                                        <th>Prontuário</th>
+                                        <th>Status</th>
                                         <th>Data</th>
                                     </tr>
                                 </thead>
@@ -51,7 +52,10 @@ export default function ConsultaPac() {
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.descricao}</td>
                                                 <td>{consulta.idSituacaoNavigation.descricao}</td>
-                                                <td>{consulta.dataConsul}</td>
+                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(consulta.dataConsul))}</td>
                                             </tr>
                                         )
                                     })}

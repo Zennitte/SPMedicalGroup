@@ -20,7 +20,7 @@ export default function ConsultaMed() {
         })
             .then(resposta => {
                 if (resposta.status === 200) {
-                    setListaConsul(resposta.data)
+                    setListaConsul(resposta.data.listaConsultas)
                 }
             })
 
@@ -36,7 +36,7 @@ export default function ConsultaMed() {
 
         axios
             .patch('http://spmedgroup-kaue.azurewebsites.net/api/consultas/descricao/' + idConsulta, {
-
+                Descricao: descricao
 
             }, {
                 headers: {
@@ -44,8 +44,9 @@ export default function ConsultaMed() {
                 }
             })
             .then(resposta => {
-                if (resposta.status === 201) {
-                    console.log('Consulta cadastrada');
+
+                if (resposta.status === 200) {
+                    console.log('Descrição alterada');
 
                     listarConsultas();
                     setIsLoading(false);
@@ -78,7 +79,7 @@ export default function ConsultaMed() {
                                         {listaConsul.map((consulta) => {
                                             return (
                                                 <option key={consulta.idConsulta} value={consulta.idConsulta}>
-                                                    {consulta.idPacienteNavigation.nome},{consulta.idPacienteNavigation.cpf}
+                                                    {consulta.idPacienteNavigation.idUsuarioNavigation.nome}/Cpf:{consulta.idPacienteNavigation.cpf}
                                                 </option>
                                             )
                                         })}
@@ -116,7 +117,7 @@ export default function ConsultaMed() {
                                     <tr>
                                         <th>Médico</th>
                                         <th>Paciente</th>
-                                        <th>Descrição</th>
+                                        <th>Prontuário</th>
                                         <th>Status</th>
                                         <th>Data</th>
                                     </tr>
@@ -129,7 +130,10 @@ export default function ConsultaMed() {
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.descricao}</td>
                                                 <td>{consulta.idSituacaoNavigation.descricao}</td>
-                                                <td>{consulta.dataConsul}</td>
+                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(consulta.dataConsul))}</td>
                                             </tr>
                                         )
                                     })}
