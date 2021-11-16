@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
-h1{
+.texto_notfound{
     font-family: 'Titillium Web', sans-serif;
     color: black;
     text-align: center;
@@ -8,7 +8,7 @@ h1{
     font-size: 2.3em;
 }
 
-.container_header{
+.container_notfound{
     display: flex;
     align-items: center;
     justify-content: center;
