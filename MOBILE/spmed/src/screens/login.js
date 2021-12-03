@@ -22,7 +22,7 @@ export default function Login() {
     realizarLogin = async() => {
         console.warn('Login Iniciado')
 
-        const resposta = await api.post('/Login', {
+        const resposta = await api.post('/login', {
             email: email,
             senha: senha,
         });
@@ -30,11 +30,10 @@ export default function Login() {
         console.warn('Requisição Feita')
 
         const token = resposta.data.token;
-        console.warn(token)
+        // console.warn(token)
         await AsyncStorage.setItem('userToken', token)
 
         if (resposta.status == 200) {
-            console.warn('Redirecionando')
             navigation.navigate('Main')
         }
     };
@@ -46,7 +45,7 @@ export default function Login() {
         >
             <View style={styles.main}>
                 <Image
-                    source={require('../../assets/img/LoginIcon.png')}
+                    source={require('../../assets/img/LoginBranco.png')}
                     style={styles.mainImgLogin}
                 />
                 <TextInput
@@ -54,7 +53,7 @@ export default function Login() {
                     placeholderTextColor='#FFF'
                     keyboardType='email-address'
                     value={email}
-                    onChange={(campo) => setEmail(campo)}
+                    onChangeText={(email) => setEmail(email)}
                     style={styles.inputLogin}
                 />
                 <TextInput
@@ -63,7 +62,7 @@ export default function Login() {
                     keyboardType='default'
                     secureTextEntry={true}
                     value={senha}
-                    onChange={(campo) => setSenha(campo)}
+                    onChangeText={(senha) => setSenha(senha)}
                     style={styles.inputLogin}
                 />
                 <TouchableOpacity
@@ -97,11 +96,11 @@ const styles = StyleSheet.create({
     inputLogin:{
         width:280,
         marginBottom:40,
-        textTransform:'uppercase',
         fontFamily:'TitilliumWeb-Regular',
         fontSize:16,
         borderBottomColor: '#FFF',
         borderBottomWidth:2,
+        color: "#FFF"
     },
     btnLoginText:{
         fontSize:16,
@@ -114,9 +113,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height:47,
-        width:80,
+        width:100,
         borderColor: '#FFF',
         borderWidth:2,
-        shadowOffset:{height:1, width:1}
+        shadowOffset:{height:1, width:1},
+        marginTop: 20
     }
 })
