@@ -10,11 +10,13 @@ import {
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import Consulta from './listar'
+import Logout from './logout'
+import Perfil from './perfil';
 
 const BottomTab = createMaterialTopTabNavigator();
 
 export default function Main() {
-    return(
+    return (
         <View
             style={styles.main}
         >
@@ -23,10 +25,17 @@ export default function Main() {
             />
             <BottomTab.Navigator
                 initialRouteName='Consulta'
-                screenOptions={({route}) => ({
+                screenOptions={({ route }) => ({
+                    swipeEnabled: true,
+                    tabBarPosition: 'bottom',
+                    headerShown: false,
+                    tabBarShowLabel: false,
+                    tabBarActiveBackgroundColor: '#118E8E',
+                    tabBarInactiveBackgroundColor: '#0F6A6A',
+                    tabBarStyle: { height: 70 },
                     tabBarIcon: () => {
                         if (route.name === 'Logout') {
-                            return(
+                            return (
                                 <Image
                                     source={require('../../assets/img/LogoutIcon.png')}
                                     style={styles.tabBarLog}
@@ -34,7 +43,7 @@ export default function Main() {
                             )
                         }
                         if (route.name === 'Perfil') {
-                            return(
+                            return (
                                 <Image
                                     source={require('../../assets/img/PerfilIcon.png')}
                                     style={styles.tabBarPerfil}
@@ -42,25 +51,18 @@ export default function Main() {
                             )
                         }
                         if (route.name === 'Consulta') {
-                            return(
+                            return (
                                 <Image
                                     source={require('../../assets/img/ConsultaIcon.png')}
                                 />
                             )
                         }
-                    },
-                    headerShown: false,
-                    tabBarShowLabel: false,
-                    swipeEnabled​: true,
-                    tabBarActiveBackgroundColor: '#118E8E',
-                    tabBarInactiveBackgroundColor: '#0F6A6A',
-                    tabBarPosition​: 'bottom',
-                    tabBarStyle: { height: 70 }
+                    }
                 })}
             >
-                <BottomTab.Screen name="Logout"/>
-                <BottomTab.Screen name="Perfil"/>
-                <BottomTab.Screen name="Consulta" component={Consulta}/>
+                <BottomTab.Screen name="Logout" component={Logout} />
+                <BottomTab.Screen name="Perfil" component={Perfil} />
+                <BottomTab.Screen name="Consulta" component={Consulta} />
             </BottomTab.Navigator>
         </View>
     )
@@ -71,17 +73,17 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#118E8E'
     },
-    tabBarLog:{
-        width:32,
-        height:30
+    tabBarLog: {
+        width: 32,
+        height: 30
     },
-    tabBarPerfil:{
-        width:25,
-        height:29,
+    tabBarPerfil: {
+        width: 25,
+        height: 29,
     },
-    tabBarConsulta:{
-        width:35,
-        height:30,
+    tabBarConsulta: {
+        width: 35,
+        height: 30,
     }
 
 })

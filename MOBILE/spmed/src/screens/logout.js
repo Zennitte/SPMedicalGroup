@@ -5,7 +5,7 @@ import{
     Text
 } from 'react-native'
 
-export default function Perfil() {
+export default function Logout() {
     return(
         <View>
             <Text>Ahhhhh</Text>
