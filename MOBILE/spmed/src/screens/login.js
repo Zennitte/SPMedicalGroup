@@ -20,17 +20,12 @@ export default function Login() {
     const navigation = useNavigation()
 
     realizarLogin = async() => {
-        console.warn('Login Iniciado')
-
         const resposta = await api.post('/login', {
             email: email,
             senha: senha,
         });
-
-        console.warn('Requisição Feita')
-
         const token = resposta.data.token;
-        // console.warn(token)
+    
         await AsyncStorage.setItem('userToken', token)
 
         if (resposta.status == 200) {
@@ -49,7 +44,7 @@ export default function Login() {
                     style={styles.mainImgLogin}
                 />
                 <TextInput
-                    placeholder='Email'
+                    placeholder={'Email'.toUpperCase()}
                     placeholderTextColor='#FFF'
                     keyboardType='email-address'
                     value={email}
@@ -57,7 +52,7 @@ export default function Login() {
                     style={styles.inputLogin}
                 />
                 <TextInput
-                    placeholder='Senha'
+                    placeholder={'Senha'.toUpperCase()}
                     placeholderTextColor='#FFF'
                     keyboardType='default'
                     secureTextEntry={true}

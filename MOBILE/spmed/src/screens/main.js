@@ -25,14 +25,8 @@ export default function Main() {
             />
             <BottomTab.Navigator
                 initialRouteName='Consulta'
+                tabBarPosition='bottom'
                 screenOptions={({ route }) => ({
-                    swipeEnabled: true,
-                    tabBarPosition: 'bottom',
-                    headerShown: false,
-                    tabBarShowLabel: false,
-                    tabBarActiveBackgroundColor: '#118E8E',
-                    tabBarInactiveBackgroundColor: '#0F6A6A',
-                    tabBarStyle: { height: 70 },
                     tabBarIcon: () => {
                         if (route.name === 'Logout') {
                             return (
@@ -57,7 +51,11 @@ export default function Main() {
                                 />
                             )
                         }
-                    }
+                    },
+                    headerShown: false,
+                    tabBarShowLabel: false,
+                    tabBarStyle: { height: 60, backgroundColor: '#118E8E' },
+                    tabBarIndicatorStyle: {display: 'none'}
                 })}
             >
                 <BottomTab.Screen name="Logout" component={Logout} />
