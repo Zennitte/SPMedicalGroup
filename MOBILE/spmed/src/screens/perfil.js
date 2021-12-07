@@ -3,7 +3,8 @@ import React from "react";
 import{
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Image
 } from 'react-native'
 
 export default function Perfil() {
@@ -19,7 +20,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: "100%",
-        height: '100%'
+        height: '100%',
+        backgroundColor: "#F6F6F6"
     },
     mainText:{
         fontFamily:'TitilliumWeb-Regular',
