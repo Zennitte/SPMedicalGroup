@@ -35,7 +35,7 @@
 <img src = "https://github.com/Zennitte/SPMedicalGroup/blob/main/BD/Modelagem/l%C3%B3gico/SPMedicalGroup-l%C3%B3gico-l%C3%B3gico.png" style = "width = 100%">
 <h3>Modelo Físico</h3>
 <p>Esse modelo representa de forma visual o banco de dados contendo as entidades, os campos e os dados armazenados nesses campos.</p>
-<img src = "https://github.com/Zennitte/SPMedicalGroup/blob/main/IMG/ModeloFisica.png" style = "width = 100%">
+<img src = "https://github.com/Zennitte/SPMedicalGroup/blob/main/IMG/ModeloFisica.png" style = "width = 1000px">
 <h2>Back-End</h2>
 <p>Para este projeto optamos por desenvolver a nossa aplicação no formato de uma API, ela foi desenvolvida utilizando o Microsoft Visual Studio.</p>
 <p><strong>Api</strong> é um conjunto de padrões e instruções estabelecidos para utilização do software, definindo as requisições e as respostas seguindo o protocolo HTTP, neste caso expresso no formato JSON, para que seja possível acessar o sistema em diversos dispositivos distintos sem a preocupação com a linguagem que será utilizada por estes.</p>
