@@ -28,3 +28,32 @@
 <h2>Modelagem</h2>
 <p>Modelagem de dados é o método de criar um modelo do sistema para explicar suas características e comportamento para facilitar o entendimento do projeto, para evitar erros em seu desenvolvimento.</p>
 <h3>Modelo Conceitual</h3>
+<p>Esse modelo mostra as entidades de forma mais simples e estabelece as relações de cardinalidade.</p>
+<img src ="https://github.com/Zennitte/SPMedicalGroup/blob/main/BD/Modelagem/conceitual/SPMedicalGroup-Conceitual-conceitual.png" style = "width = 100%">
+<h3>Modelo Lógico</h3>
+<p>Esse modelo mostra as entidades de forma mais complexa já contendo seus campos e também apresenta cardinalidade.</p>
+<img src = "https://github.com/Zennitte/SPMedicalGroup/blob/main/BD/Modelagem/l%C3%B3gico/SPMedicalGroup-l%C3%B3gico-l%C3%B3gico.png" style = "width = 100%">
+<h3>Modelo Físico</h3>
+<p>Esse modelo representa de forma visual o banco de dados contendo as entidades, os campos e os dados armazenados nesses campos.</p>
+<img src = "https://github.com/Zennitte/SPMedicalGroup/blob/main/IMG/ModeloFisica.png" style = "width = 100%">
+<h2>Back-End</h2>
+<p>Para este projeto optamos por desenvolver a nossa aplicação no formato de uma API, ela foi desenvolvida utilizando o Microsoft Visual Studio.</p>
+<p><strong>Api</strong> é um conjunto de padrões e instruções estabelecidos para utilização do software, definindo as requisições e as respostas seguindo o protocolo HTTP, neste caso expresso no formato JSON, para que seja possível acessar o sistema em diversos dispositivos distintos sem a preocupação com a linguagem que será utilizada por estes.</p>
+<p>Além disso, foi utilizado o estilo de arquitetura REST.</p>
+<p><strong>API -</strong> Application Programming Interface – Interface de Programação de Aplicativos.</p>
+<p><strong>HTTP -</strong> Hypertext Transfer Protocol – Protocolo de Transferência de Hipertexto.</p>
+<p><strong>JSON -</strong> JavaScript Object Notation – Notação de Objetos JavaScript.</p>
+<p><strong>REST -</strong> Representational State Transfer – Interface de Programação de Aplicativos.</p>
+<p><strong>Entity Framework</strong> é um conjunto de tecnologias no ADO.NET que dão suporte ao desenvolvimento de aplicativos de software orientado a dados. O Entity Framework permite que os desenvolvedores trabalhem com dados na forma de objetos e propriedades específicos de domínio, como clientes e endereços de clientes, sem ter que se preocupar com as tabelas e colunas de banco de dados subjacentes em que esses data são armazenados.</p>
+<p><strong>Swagger</strong> é uma ferramenta usada para documentar os endpoints da nossa API.</p>
+<p><strong>DataBase First </strong>é o método de construção da API onde se usa as tabelas preexististentes no banco de dados, e os transforma em classes dentro da API</p>
+<p><strong>JWT </strong>é o método de autenticação usado, onde a autenticação é por meio de tokens.</p>
+<h2>Web</h2>
+<p>A parte web do projeto resolvemos desenvolver em JavaScript mais especificamente usando a biblioteca ReactJs.</p>
+<p>Foram desenvolvidas 4 telas:</p>
+<ul>
+  <li>Login: Página que gera um token e redireciona para as outras páginas baseado no token gerado.</li>
+  <li>Administrador: Página onde os administradores podem cadastrar e listar todas as consultas.</li>
+  <li>Médico: Página onde os médicos podem listar suas próprias consultas e adicionar um prontuário as suas consultas.</li>
+  <li>Paciente: Página onde os pacientes podem ver suas próprias consultas</li>
+</ul>
