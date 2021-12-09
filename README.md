@@ -55,7 +55,7 @@
   <li>Login: Página que gera um token e redireciona para as outras páginas baseado no token gerado.</li>
   <li>Administrador: Página onde os administradores podem cadastrar e listar todas as consultas.</li>
   <li>Médico: Página onde os médicos podem listar suas próprias consultas e adicionar um prontuário as suas consultas.</li>
-  <li>Paciente: Página onde os pacientes podem ver suas próprias consultas</li>
+  <li>Paciente: Página onde os pacientes podem ver suas próprias consultas.</li>
 </ul>
 <h2>Mobile</h2>
 <p>A parte mobile do projeto foi desenvolvida em JavaScript, utilizando a biblioteca React Native que transpila o código em JavaScript para Java onde essa aplicação é emulada pelo Android Studio.</p>
@@ -63,6 +63,6 @@
 <ul>
   <li>Login: Tela onde é gerado o token e redireciona para outras telas caso o token seja válido.</li>
   <li>Consultas: Tela onde os médicos e os pacientes podem ver suas consultas.</li>
-  <li>Logout: Tela onde os úsuarios podem deslogar do aplicativo, sendo redirecionados para login e tendo o token limpo</li>
+  <li>Logout: Tela onde os úsuarios podem deslogar do aplicativo, sendo redirecionados para login e tendo o token limpo.</li>
   <li>Perfil: Tela ainda em construção.</li>
 </ul>
