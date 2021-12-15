@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 import Header from "../../components/header/header";
 import Footer from '../../components/footer/footer';
@@ -150,15 +151,15 @@ export default function ConsultaAdm() {
                                         type="datetime-local"
                                         name="data"
                                         value={dataConsul}
-                                        onChange = {(campo) => setDataConsul(campo.target.value)}
+                                        onChange={(campo) => setDataConsul(campo.target.value)}
                                     />
                                 </div>
                                 {isLoading && (
-                                    <button disabled className='btn' type = 'submit'>
+                                    <button disabled className='btn' type='submit'>
                                         Carregando...
                                     </button>
                                 )}
-                                {!isLoading &&(
+                                {!isLoading && (
                                     <button className='btn' type='submit'>
                                         Cadastrar
                                     </button>
@@ -183,7 +184,7 @@ export default function ConsultaAdm() {
                                 </thead>
                                 <tbody>
                                     {listaConsul.map((consulta) => {
-                                        return(
+                                        return (
                                             <tr key={consulta.idConsulta}>
                                                 <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
@@ -199,6 +200,18 @@ export default function ConsultaAdm() {
                                 </tbody>
                             </table>
                         </section>
+                    </div>
+                </div>
+                <div className="backgroundMapa">
+                    <div className="grid alinhar_conteudo">
+                        <div className="btnMapa">
+                            <Link
+                                to="/mapa"
+                                className="btnMapa_Text"
+                            >
+                                Acessar Mapa de Pacientes
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </main>

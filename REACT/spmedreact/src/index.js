@@ -14,6 +14,7 @@ import Adm from './pages/adm/adm';
 import Pac from './pages/pac/pac';
 import Med from './pages/med/med';
 import NotFound from './pages/notfound/notfound';
+import Mapa from './pages/mapas/mapa'
 
 import reportWebVitals from './reportWebVitals';
 
@@ -60,6 +61,7 @@ const routing = (
         <Route exact path="/" component = {Login}/>
         <Route path ="/login" component ={Login}/>
         <PermissaoAdm path = "/adm" component = {Adm}/>
+        <PermissaoAdm path = "/mapa" component = {Mapa}/>
         <PermissaoMed path = "/med" component = {Med}/>
         <PermissaoPac path = "/pac" component = {Pac}/>
         <Route path = "/notFound" component = {NotFound}/>

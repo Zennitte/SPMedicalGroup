@@ -153,3 +153,35 @@ input {
     font-size: 1em;
     border-bottom: 2px solid white;
 }
+
+.backgroundMapa {
+    background-color: rgb(241, 241, 241);
+    height: 450px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.alinhar_conteudo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.btnMapa{
+    background-color: rgb(17, 44, 44);
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+.btnMapa_Text{
+    color: white;
+    text-decoration: none;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.5em;
+}
