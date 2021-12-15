@@ -10,6 +10,7 @@
   <img align = "center" alt = "Draw.io" height = "40" width = "40" src = "https://avatars.githubusercontent.com/u/1769238?s=200&v=4">
   <h3>Banco De Dados</h3>
   <img align = "center" alt = "SQL Server" height = "40" width = "40" src ="https://img.icons8.com/color/48/000000/microsoft-sql-server.png">
+  <img align = "center" alt = "SQL Server" height = "40" width = "40" src ="https://github.com/devicons/devicon/blob/master/icons/mongodb/mongodb-original.svg">
   <h3>Layout</h3>
   <img align = "center" alt = "Figma" height = "40" width = "40" src = "https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg">
   <h3>Versionamento</h3>
@@ -50,7 +51,7 @@
 <p><strong>JWT </strong>é o método de autenticação usado, onde a autenticação é por meio de tokens.</p>
 <h2>Web</h2>
 <p>A parte web do projeto resolvemos desenvolver em JavaScript mais especificamente usando a biblioteca ReactJs.</p>
-<p>Foram desenvolvidas 4 páginas:</p>
+<p>Foram desenvolvidas 5 páginas:</p>
 <ul>
   <li>Login: Página que gera um token e redireciona para as outras páginas baseado no token gerado.</li>
   <li>Administrador: Página onde os administradores podem cadastrar e listar todas as consultas.</li>
@@ -66,3 +67,5 @@
   <li>Logout: Tela onde os úsuarios podem deslogar do aplicativo, sendo redirecionados para login e tendo o token limpo.</li>
   <li>Perfil: Tela ainda em construção.</li>
 </ul>
+<h2>NoSQL</h2>
+<p>Foi desenvolvido um banco de dados que contém a localização geográfica de cada paciente</p>
