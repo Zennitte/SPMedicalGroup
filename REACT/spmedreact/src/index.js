@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom'
-import { parseJwt, usuarioAutenticado } from './services/auth'
+// import { parseJwt, usuarioAutenticado } from './services/auth'
 
 import './index.css';
 
@@ -18,52 +18,52 @@ import Mapa from './pages/mapas/mapa'
 
 import reportWebVitals from './reportWebVitals';
 
-const PermissaoAdm = ({ component: Component }) => (
-  <Route
-    render={(props) =>
-      usuarioAutenticado() && parseJwt().role === '2' ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="login" />
-      )
-    }
-  />
-);
+// const PermissaoAdm = ({ component: Component }) => (
+//   <Route
+//     render={(props) =>
+//       usuarioAutenticado() && parseJwt().role === '2' ? (
+//         <Component {...props} />
+//       ) : (
+//         <Redirect to="login" />
+//       )
+//     }
+//   />
+// );
 
-const PermissaoPac = ({ component: Component }) => (
-  <Route
-    render={(props) =>
-      usuarioAutenticado() && parseJwt().role === '1' ? (
-      <Component {...props}/>
-    ) : (
-      <Redirect to = "login"/>
-    )
-    }
-  />
-)
+// const PermissaoPac = ({ component: Component }) => (
+//   <Route
+//     render={(props) =>
+//       usuarioAutenticado() && parseJwt().role === '1' ? (
+//       <Component {...props}/>
+//     ) : (
+//       <Redirect to = "login"/>
+//     )
+//     }
+//   />
+// )
 
-const PermissaoMed = ({ component: Component }) => (
-  <Route
-    render={(props) =>
-      usuarioAutenticado() && parseJwt().role === '3' ? (
-      <Component {...props}/>
-    ) : (
-      <Redirect to = "login"/>
-    )
-    }
-  />
-)
+// const PermissaoMed = ({ component: Component }) => (
+//   <Route
+//     render={(props) =>
+//       usuarioAutenticado() && parseJwt().role === '3' ? (
+//       <Component {...props}/>
+//     ) : (
+//       <Redirect to = "login"/>
+//     )
+//     }
+//   />
+// )
 
 const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component = {Login}/>
+        <Route exact path="/" component = {Adm}/>
         <Route path ="/login" component ={Login}/>
-        <PermissaoAdm path = "/adm" component = {Adm}/>
-        <PermissaoAdm path = "/mapa" component = {Mapa}/>
-        <PermissaoMed path = "/med" component = {Med}/>
-        <PermissaoPac path = "/pac" component = {Pac}/>
+        <Route path = "/adm" component = {Adm}/>
+        <Route path = "/mapa" component = {Mapa}/>
+        <Route path = "/med" component = {Med}/>
+        <Route path = "/pac" component = {Pac}/>
         <Route path = "/notFound" component = {NotFound}/>
         <Redirect to = "/notFound"/>
       </Switch>

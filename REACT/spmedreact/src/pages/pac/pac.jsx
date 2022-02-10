@@ -10,11 +10,7 @@ export default function ConsultaPac() {
     const [listaConsul, setListaConsul] = useState([]);
 
     function listarConsultas() {
-        axios('http://spmedgroup-kaue.azurewebsites.net/api/consultas/listar/minhas', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
+        axios('https://620559be161670001741b98a.mockapi.io/consulta')
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaConsul(resposta.data.listaConsultas)

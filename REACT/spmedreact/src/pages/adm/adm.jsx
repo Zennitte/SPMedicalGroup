@@ -17,14 +17,12 @@ export default function ConsultaAdm() {
     const [isLoading, setIsLoading] = useState(false);
 
     function listarConsultas() {
-        axios('http://spmedgroup-kaue.azurewebsites.net/api/consultas', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
+        axios('https://620559be161670001741b98a.mockapi.io/consulta')
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaConsul(resposta.data)
+
+                    console.log(listaConsul)
                 }
             })
 
@@ -34,11 +32,7 @@ export default function ConsultaAdm() {
     useEffect(listarConsultas, []);
 
     function listarMedicos() {
-        axios('http://spmedgroup-kaue.azurewebsites.net/api/medicos', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
+        axios('https://620559be161670001741b98a.mockapi.io/medico')
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaMed(resposta.data)
@@ -51,11 +45,7 @@ export default function ConsultaAdm() {
     useEffect(listarMedicos, []);
 
     function listarPacientes() {
-        axios('http://spmedgroup-kaue.azurewebsites.net/api/pacientes', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
+        axios('https://620559be161670001741b98a.mockapi.io/paciente')
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaPac(resposta.data)
@@ -73,14 +63,10 @@ export default function ConsultaAdm() {
         evento.preventDefault()
 
         axios
-            .post('http://spmedgroup-kaue.azurewebsites.net/api/consultas', {
+            .post('https://620559be161670001741b98a.mockapi.io/consulta', {
                 idPaciente: idPaciente,
                 idMedico: idMedico,
                 dataConsul: dataConsul
-            }, {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                }
             })
             .then(resposta => {
                 if (resposta.status === 201) {
@@ -185,7 +171,7 @@ export default function ConsultaAdm() {
                                 <tbody>
                                     {listaConsul.map((consulta) => {
                                         return (
-                                            <tr key={consulta.idConsulta}>
+                                            <tr key={consulta.id}>
                                                 <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</td>
                                                 <td>{consulta.descricao}</td>
